@@ -1,15 +1,21 @@
 const {app, BrowserWindow } = require('electron')
 const path = require('path')
 require('@electron/remote/main').initialize()
-
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow() {
     const mywindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+       
+        width: 500,
+        height: 400,
         icon: path.join(__dirname, 'icon.png'),
         webPreferences: {
             enableRemoteModule:true,
-            
+            contextIsolation: false,
+            nodeIntegration: true,
+            nodeIntegrationInWorker: true,
+            webSecurity: false,
+            allowRunningInsecureContent: true
+                    
 
         }
     })
